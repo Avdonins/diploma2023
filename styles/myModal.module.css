@@ -1,0 +1,30 @@
+.myModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex; /* add (none at start) */
+    opacity: 0; /* add */
+    z-index: -1; /* add */
+    justify-content: center; /* add */
+    align-items: center;    /* add */
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out; /* add */
+}
+
+.myModalContent {
+    padding: 20px;
+    background-color: white;
+    border-radius: 16px;
+    min-width: 400px;
+}
+
+.myModal.active {
+    display: flex;
+    opacity: 1; /* add */
+    z-index: 1; /* add */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out; /* add */
+}

@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.error {
+  color: rgb(223, 27, 27);
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.page__wrapper {
+  margin: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.page {
+  padding: 10px;
+  border: 1px solid teal;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.page__current {
+  border: 2px solid orange;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.star_ratings {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  /* height: 25px; */
+  width: 100px;
+  /* margin: 0 auto; */
+  position: relative;
+  text-shadow: 0 1px 0 #a2a2a2;
+}
+
+.star_ratings::before {
+  content: '★★★★★';
+  opacity: .3;
+}
+
+.star_ratings.r_0::after {
+  width: 0%;
+}
+
+.star_ratings.r_5::after {
+  width: 10.5%;
+}
+
+.star_ratings.r_10::after {
+  width: 21%;
+}
+
+.star_ratings.r_15::after {
+  width: 31.5%;
+}
+
+.star_ratings.r_20::after {
+  width: 42%;
+}
+
+.star_ratings.r_25::after {
+  width: 52.5%;
+}
+
+.star_ratings.r_30::after {
+  width: 63%;
+}
+
+.star_ratings.r_35::after {
+  width: 73.5%;
+}
+
+.star_ratings.r_40::after {
+  width: 84%;
+}
+
+.star_ratings.r_45::after {
+  width: 94.5%;
+}
+
+.star_ratings.r_50::after {
+  width: 105%;
+}
+
+.star_ratings::after {
+  color: gold;
+  content: '★★★★★';
+  text-shadow: 0 1px 0 #ab5414;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  left: 0;
+  top: 0;
+  width: attr(rating);
+  overflow: hidden;
+}
+
+.good_id__wrapper {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.good_id__chart_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.good_id__chart {
+  border: 2px solid teal;
+  padding: 15px;
+}
+
+.good_id__img {
+  margin-top: 30px;
+}
+
+.good_id__info {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.good_id__price {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,0 +1,31 @@
+.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.disable {
+    display: none;
+}
+
+.form__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form__btn {
+    margin: 2px;
+    color: teal;
+    background: transparent;
+    border: 0px solid teal;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.form__btn:hover {
+    color: rgb(1, 66, 66);
+}
+
+.form__container_btn {
+    display: flex;
+    justify-content: space-around;
+}

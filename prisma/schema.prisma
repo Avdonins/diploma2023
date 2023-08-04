@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  basket    Basket?
+  token     String   @default("") @db.VarChar(255)
+  tokenExp  DateTime @default(now())
+  authToken String   @default("") @db.VarChar(255)
+}
+
+model Good {
+  id            Int             @id @default(autoincrement())
+  img           String?
+  name          String
+  description   String?
+  raiting       Float?
+  price         Int
+  priceDiscount Int?
+  url           String
+  category      String
+  isDel         Boolean         @default(false)
+  shop          String
+  basketDevice  Basket_Device[]
+  OldPrices     Old_Price[]
+}
+
+model Old_Price {
+  id        Int            @id @default(autoincrement())
+  massDates Prices_Dates[]
+  good      Good           @relation(fields: [goodId], references: [id], onDelete: Cascade)
+  goodId    Int            @unique
+}
+
+model Prices_Dates {
+  id         Int       @id @default(autoincrement())
+  price      Int
+  createdAt  DateTime  @default(now())
+  shop       String    @default("dns")
+  oldPriceId Int
+  oldPrice   Old_Price @relation(fields: [oldPriceId], references: [id], onDelete: Cascade)
+}
+
+model Basket {
+  id      Int             @id @default(autoincrement())
+  devices Basket_Device[]
+  user    User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  Int             @unique
+}
+
+model Basket_Device {
+  id       Int    @id @default(autoincrement())
+  count    Int?
+  basketId Int
+  goodId   Int?
+  good     Good?  @relation(fields: [goodId], references: [id], onDelete: Cascade)
+  basket   Basket @relation(fields: [basketId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  USER
+  ADMIN
+}
